@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "wisata": "Tourism",
+    "lawa": "Lawa",
+    "baluara": "Baluara"
+  },
+  "home": {
+    "aboutTitle": "Buton Palace Fortress",
+    "aboutDesc": "We are a tourism promotion platform for Baubau City and Buton Island. Discover the incredible nature, culture, and history through this site.",
+    "readMore": "Read More",
+    "more": "See More",
+    "mapPlaceholder": "Location Map Placeholder",
+    "noImage": "No image available",
+    "wisata": {
+      "title": "Tourism",
+      "desc": "A short description of tourism number"
+    },
+    "lawa": {
+      "title": "Lawa",
+      "desc": "A short description of lawa number"
+    },
+    "baluara": {
+      "title": "Baluara",
+      "desc": "A short description of baluara number"
+    }
+  },
+
+  "wisata": {
+    "title": "Tourist Destinations"
+  },
+  "lawa": {
+    "title": "Lawa List"
+  },
+  "baluara": {
+    "title": "Baluara List"
+  },
+  "detail": {
+    "goNow": "Go Now?"
+  },
+
+  "footer": {
+    "description": "Explore the majestic heritage of the Buton Palace Fortress – from unique destinations to inspiring historical stories, all in one interactive platform!",
+    "explore": "Explore",
+    "contact": "Contact Us",
+    "address": "Jl. Betoambari No.45, Baubau",
+    "email": "info@bentengkeratonbuton.id",
+    "phone": "(0402) 123456",
+    "copyright": "All rights reserved."
+  },
+  "tentang": {
+    "title": "About Us",
+    "intro": "We are a digital platform to introduce the charm of tourism, culture, and history of Buton to the world.",
+    "missionTitle": "Buton Palace Fortress",
+    "mission1": "This website aims to introduce the natural and cultural richness of the Buton region, including Baubau City and its surroundings. By utilizing web technology, we aim to make it easier for travelers to find and explore the best destinations.",
+    "mission2": "We believe that accurate and engaging information can help both locals and tourists plan meaningful and memorable trips.",
+    "locationTitle": "All Destination Locations",
+    "mapPlaceholder": "Map Placeholder / Google Maps",
+    "noImage": "No image displayed"
+  }
+}

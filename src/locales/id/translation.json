@@ -1,0 +1,62 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "wisata": "Wisata",
+    "lawa": "Lawa",
+    "baluara": "Baluara"
+  },
+  "home": {
+    "aboutTitle": "Benteng Keraton Buton",
+    "aboutDesc": "Kami adalah platform promosi wisata Kota Baubau dan Pulau Buton. Temukan keindahan alam, budaya, dan sejarah yang luar biasa melalui situs ini.",
+    "readMore": "Baca Selengkapnya",
+    "more": "Selengkapnya",
+    "mapPlaceholder": "Placeholder Peta Lokasi",
+    "noImage": "Belum ada gambar tersedia",
+    "wisata": {
+      "title": "Wisata",
+      "desc": "Deskripsi singkat tentang wisata ke-"
+    },
+    "lawa": {
+      "title": "Lawa",
+      "desc": "Deskripsi singkat tentang lawa ke-"
+    },
+    "baluara": {
+      "title": "Baluara",
+      "desc": "Deskripsi singkat tentang baluara ke-"
+    }
+  },
+
+  "wisata": {
+    "title": "Daftar Wisata"
+  },
+  "lawa": {
+    "title": "Daftar Lawa"
+  },
+  "baluara": {
+    "title": "Daftar Baluara"
+  },
+  "detail": {
+    "goNow": "Pergi Sekarang?"
+  },
+
+  "footer": {
+    "description": "Jelajahi warisan megah Benteng Keraton Buton – dari destinasi unik hingga kisah sejarah yang menginspirasi, semuanya tersedia dalam satu platform interaktif!",
+    "explore": "Jelajahi",
+    "contact": "Kontak Kami",
+    "address": "Jl. Betoambari No.45, Baubau",
+    "email": "info@bentengkeratonbuton.id",
+    "phone": "(0402) 123456",
+    "copyright": "Semua hak dilindungi."
+  },
+  "tentang": {
+    "title": "Tentang Kami",
+    "intro": "Kami adalah platform digital untuk memperkenalkan pesona wisata, budaya, dan sejarah Buton kepada dunia.",
+    "missionTitle": "Benteng Keraton Buton",
+    "mission1": "Website ini bertujuan untuk memperkenalkan kekayaan alam dan budaya di wilayah Buton, termasuk Kota Baubau dan sekitarnya. Dengan memanfaatkan teknologi web, kami ingin mempermudah wisatawan dalam menemukan dan mengeksplorasi destinasi terbaik.",
+    "mission2": "Kami percaya bahwa informasi yang akurat dan menarik dapat membantu masyarakat lokal dan turis dalam merencanakan perjalanan yang berkesan dan penuh makna.",
+    "locationTitle": "Lokasi Seluruh Destinasi",
+    "mapPlaceholder": "Placeholder Peta / Google Maps",
+    "noImage": "Belum ada gambar ditampilkan"
+  }
+}
