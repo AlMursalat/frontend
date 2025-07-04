@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// ✅ Ambil BASE_URL dari .env
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 function ManagementBeranda() {
@@ -36,9 +35,7 @@ function ManagementBeranda() {
       setAboutText(about.text || "");
       setAboutTextEn(about.text_en || "");
       setAboutId(about.id || null);
-      setAboutPreview(
-        about.image ? `${BASE_URL}/uploads/tentang/${about.image}` : null
-      );
+      setAboutPreview(about.image || null); // ✅ Gunakan URL langsung
     } catch (error) {
       console.error("Gagal ambil tentang kami:", error);
     }
@@ -163,7 +160,7 @@ function ManagementBeranda() {
                 <td className="border px-2 py-1 text-center">{index + 1}</td>
                 <td className="border px-2 py-1 text-center">
                   <img
-                    src={`${BASE_URL}/uploads/slider/${item.image_url}`}
+                    src={item.image_url} // ✅ URL langsung dari Cloudinary
                     alt={`slider-${index}`}
                     className="h-20 object-cover mx-auto"
                   />

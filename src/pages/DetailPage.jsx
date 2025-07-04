@@ -48,7 +48,7 @@ function DetailPage({ type }) {
     <div className="max-w-5xl mx-auto px-4 py-10 text-[#526E48]">
       {/* Gambar */}
       <img
-        src={`${BASE_URL}/uploads/${type}/${data.gambar}`}
+        src={data.gambar}
         alt={data.nama}
         className="w-full h-64 object-cover rounded-lg shadow mb-6"
       />

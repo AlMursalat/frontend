@@ -9,7 +9,6 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-// ✅ Ambil BASE_URL dari .env
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 L.Icon.Default.mergeOptions({
@@ -30,20 +29,16 @@ function Tentang() {
       try {
         const res = await axios.get(`${BASE_URL}/api/beranda/about`);
         const lang = i18n.language;
+        const textId = res.data.text || "";
+        const textEn = res.data.text_en || "";
 
-        const selectedText = lang.startsWith("en")
-          ? res.data.text_en || res.data.text
-          : res.data.text || res.data.text_en;
-
-        setAboutText(selectedText);
-        setLoading(false);
-        setAboutImage(
-          res.data.image
-            ? `${BASE_URL}/uploads/tentang/${res.data.image}`
-            : null
-        );
+        setAboutText(lang.startsWith("en") ? textEn || textId : textId || textEn);
+        setAboutImage(res.data.image || null); // ✅ gunakan langsung Cloudinary URL
       } catch (err) {
         console.error("Gagal fetch tentang kami", err);
+        setAboutText(t("tentang.mission1"));
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -55,33 +50,17 @@ function Tentang() {
           axios.get(`${BASE_URL}/api/baluara`),
         ]);
 
-        const all = [
-          ...wisataRes.data.map((item) => ({
-            id: `wisata-${item.id}`,
-            nama: item.nama,
-            deskripsi: item.deskripsi,
-            lat: parseFloat(item.lat),
-            lng: parseFloat(item.lng),
-          })),
-          ...lawaRes.data.map((item) => ({
-            id: `lawa-${item.id}`,
-            nama: item.nama,
-            deskripsi: item.deskripsi,
-            lat: parseFloat(item.lat),
-            lng: parseFloat(item.lng),
-          })),
-          ...baluaraRes.data.map((item) => ({
-            id: `baluara-${item.id}`,
-            nama: item.nama,
-            deskripsi: item.deskripsi,
-            lat: parseFloat(item.lat),
-            lng: parseFloat(item.lng),
-          })),
-        ];
+        const combined = [...wisataRes.data, ...lawaRes.data, ...baluaraRes.data].map((item) => ({
+          id: `${item.nama}-${item.id}`,
+          nama: item.nama,
+          deskripsi: item.deskripsi || "",
+          lat: parseFloat(item.lat),
+          lng: parseFloat(item.lng),
+        }));
 
-        setDestinasi(all);
+        setDestinasi(combined);
       } catch (err) {
-        console.error("Gagal fetch destinasi", err);
+        console.error("Gagal fetch destinasi:", err);
       }
     };
 
@@ -99,14 +78,12 @@ function Tentang() {
         </p>
       </div>
 
-      {/* Section: Info & Image */}
+      {/* Tentang Kami Section */}
       <div className="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center gap-10">
         <div className="md:w-1/2">
-          <h2 className="text-xl font-semibold mb-4">
-            {t("tentang.missionTitle")}
-          </h2>
+          <h2 className="text-xl font-semibold mb-4">{t("tentang.missionTitle")}</h2>
           <p className="text-sm leading-relaxed mb-4">
-            {loading ? t("tentang.mission1") : aboutText}
+            {loading ? t("tentang.loading") : aboutText}
           </p>
         </div>
         <div className="md:w-1/2">
@@ -124,18 +101,14 @@ function Tentang() {
         </div>
       </div>
 
-      {/* Section: Lokasi */}
+      {/* Map Section */}
       <div className="container mx-auto px-4 pb-16">
         <h2 className="text-xl font-semibold mb-4 text-center">
           {t("tentang.locationTitle")}
         </h2>
 
         <div className="w-full h-[400px] rounded shadow overflow-hidden">
-          <MapContainer
-            center={[-5.4738, 122.602]}
-            zoom={15}
-            style={{ height: "100%", width: "100%" }}
-          >
+          <MapContainer center={[-5.4738, 122.602]} zoom={15} style={{ height: "100%", width: "100%" }}>
             <TileLayer
               url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
               attribution='Tiles &copy; <a href="https://www.esri.com/">Esri</a>'
@@ -145,7 +118,7 @@ function Tentang() {
                 <Popup>
                   <strong>{item.nama}</strong>
                   <br />
-                  {item.deskripsi.slice(0, 100)}...
+                  {item.deskripsi ? item.deskripsi.slice(0, 100) + "..." : t("tentang.noDesc")}
                 </Popup>
               </Marker>
             ))}

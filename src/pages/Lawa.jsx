@@ -26,7 +26,7 @@ function Lawa() {
         desc: lang.startsWith("en")
           ? item.deskripsi_en || item.deskripsi
           : item.deskripsi,
-        img: `${BASE_URL}/uploads/lawa/${item.gambar}`,
+        img: item.gambar,
       }));
 
       setData(mapped);

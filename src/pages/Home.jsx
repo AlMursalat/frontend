@@ -41,9 +41,7 @@ function Home() {
   const fetchSlider = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/api/beranda/slider`);
-      const images = (res.data || []).map(
-        (item) => `${BASE_URL}/uploads/slider/${item.image_url}`
-      );
+      const images = res.data.map((item) => item.image_url); // ✅ Sudah berupa URL
       setSliderImages(images);
     } catch (err) {
       console.error("Gagal fetch slider:", err);
@@ -59,67 +57,68 @@ function Home() {
         lang === "en" ? res.data.text_en || res.data.text : res.data.text;
 
       setAboutText(selectedText || "");
-      setAboutImage(
-        res.data.image ? `${BASE_URL}/uploads/tentang/${res.data.image}` : null
-      );
+      setAboutImage(res.data.image || null); // ✅ URL langsung
     } catch (err) {
       console.error("Gagal fetch tentang:", err);
     }
   };
 
   const fetchWisata = async () => {
-    try {
-      const res = await axios.get(`${BASE_URL}/api/wisata`);
-      const data = res.data.map((item) => ({
-        id: item.id,
-        title: item.nama,
-        desc: item.deskripsi,
-        desc_en: item.deskripsi_en,
-        img: `${BASE_URL}/uploads/wisata/${item.gambar}`,
-        lat: item.lat,
-        lng: item.lng,
-      }));
-      setWisataData(data);
-    } catch (err) {
-      console.error("Gagal fetch wisata:", err);
-    }
-  };
+  try {
+    const res = await axios.get(`${BASE_URL}/api/wisata`);
+    const data = res.data.map((item) => ({
+      id: item.id,
+      title: item.nama,
+      desc: item.deskripsi,
+      desc_en: item.deskripsi_en,
+      img: item.gambar, // ✅ Langsung dari Cloudinary
+      lat: item.lat,
+      lng: item.lng,
+    }));
+    setWisataData(data);
+  } catch (err) {
+    console.error("Gagal fetch wisata:", err);
+  }
+};
+
 
   const fetchLawa = async () => {
-    try {
-      const res = await axios.get(`${BASE_URL}/api/lawa`);
-      const data = res.data.map((item) => ({
-        id: item.id,
-        title: item.nama,
-        desc: item.deskripsi,
-        desc_en: item.deskripsi_en,
-        img: `${BASE_URL}/uploads/lawa/${item.gambar}`,
-        lat: item.lat,
-        lng: item.lng,
-      }));
-      setLawaData(data);
-    } catch (err) {
-      console.error("Gagal fetch lawa:", err);
-    }
-  };
+  try {
+    const res = await axios.get(`${BASE_URL}/api/lawa`);
+    const data = res.data.map((item) => ({
+      id: item.id,
+      title: item.nama,
+      desc: item.deskripsi,
+      desc_en: item.deskripsi_en,
+      img: item.gambar, // ✅ Langsung dari Cloudinary
+      lat: item.lat,
+      lng: item.lng,
+    }));
+    setLawaData(data);
+  } catch (err) {
+    console.error("Gagal fetch lawa:", err);
+  }
+};
+
 
   const fetchBaluara = async () => {
-    try {
-      const res = await axios.get(`${BASE_URL}/api/baluara`);
-      const data = res.data.map((item) => ({
-        id: item.id,
-        title: item.nama,
-        desc: item.deskripsi,
-        desc_en: item.deskripsi_en,
-        img: `${BASE_URL}/uploads/baluara/${item.gambar}`,
-        lat: item.lat,
-        lng: item.lng,
-      }));
-      setBaluaraData(data);
-    } catch (err) {
-      console.error("Gagal fetch baluara:", err);
-    }
-  };
+  try {
+    const res = await axios.get(`${BASE_URL}/api/baluara`);
+    const data = res.data.map((item) => ({
+      id: item.id,
+      title: item.nama,
+      desc: item.deskripsi,
+      desc_en: item.deskripsi_en,
+      img: item.gambar, // ✅ Langsung dari Cloudinary
+      lat: item.lat,
+      lng: item.lng,
+    }));
+    setBaluaraData(data);
+  } catch (err) {
+    console.error("Gagal fetch baluara:", err);
+  }
+};
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -238,7 +237,6 @@ function Home() {
               </button>
             </div>
 
-            {/* Scrollable Destinations */}
             <div className="lg:grid lg:grid-cols-4 lg:gap-6 overflow-x-auto flex gap-4 pb-2 snap-x scroll-smooth no-scrollbar">
               {section.data.map((item) => {
                 const deskripsiFinal =

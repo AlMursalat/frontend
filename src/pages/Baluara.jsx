@@ -26,7 +26,7 @@ function Baluara() {
         desc: lang.startsWith("en")
           ? item.deskripsi_en || item.deskripsi
           : item.deskripsi,
-        img: `${BASE_URL}/uploads/baluara/${item.gambar}`,
+        img: item.gambar,
       }));
 
       setData(mapped);

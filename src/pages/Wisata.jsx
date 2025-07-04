@@ -26,7 +26,7 @@ function Wisata() {
         desc: currentLang.startsWith("en")
           ? item.deskripsi_en || item.deskripsi
           : item.deskripsi || item.deskripsi_en,
-        img: `${BASE_URL}/uploads/wisata/${item.gambar}`,
+        img: item.gambar, // ✅ Langsung URL dari Cloudinary
       }));
 
       setWisataList(data);

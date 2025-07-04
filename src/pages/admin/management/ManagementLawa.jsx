@@ -230,7 +230,7 @@ function ManagementLawa() {
                 </td>
                 <td className="border px-2 py-1">
                   <img
-                    src={`${BASE_URL}/uploads/lawa/${item.gambar}`}
+                    src={item.gambar}
                     alt={item.nama}
                     className="w-24 h-16 object-cover rounded mx-auto"
                   />
